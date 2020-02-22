@@ -1,5 +1,6 @@
 #Python basic (Part -I) [150 exercises with solution]
 #https://www.w3resource.com/python-exercises/python-basic-exercises.php
+#https://www.tutorialspoint.com/python3/python_dictionary.htm
 #https://docs.python.org/3/tutorial/
 
 from __future__ import print_function
@@ -260,7 +261,7 @@ def pyStrCheck(txt):
 #print(pyStrCheck("is this your car?"))
 
 
-#//Other wat to write code for this//
+#////////////////Other way to write code for this////////////////
 
 def pyStrCheck2(txt):
     if len(txt) >=2 and txt[:2] == "is":
@@ -529,6 +530,22 @@ def pyPrime(start, end):
                 
 #print (pyPrime(2,30))
 
+###################### Another way to do ######################
+
+def PrimeNumber():
+    for i in range(100):
+        #print(50*'-')
+        f=0
+        for j in range(2,i):
+            if(i%j==0):
+                f=1
+                #print(50*'*')
+                break
+        if (f==0):
+            print(i)
+            
+#print (PrimeNumber())
+            
 ##############################################################################################################################
 '''32. Write a Python program to Multiply all numbers in the lis.'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
@@ -1552,4 +1569,160 @@ def fstrComp_1(stng):
     print(sRes)
     
 #fstrComp_1("aaabdH")
-        
+
+
+##############################################################################################################################
+'''154. Write a function to compress a given string is Palindrome or not'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+def pyPalindrome1(str):
+  hf = int(len(str)/2)
+  for i in range(0,hf):
+    if str[i] != str[len(str)-(i+1)]:
+      return "Not Palindrome"
+  return "Palindrome"
+      
+#print(pyPalindrome1('acbbaabca'))
+#print(pyPalindrome1('acbb1bbca'))
+
+#////////////////Other way to write code for this////////////////
+
+def pyPalindrome2(x):
+  rev = "".join(reversed(x))
+  if x != rev:
+    return False
+  return True
+ 
+#print(pyPalindrome2("aba"))
+#print(pyPalindrome2("babbbba"))
+
+#////////////////Other way to write code for this////////////////
+
+def pyPalindrome(x):
+  r = ""
+  for i in x:
+    r = i + r
+  if r != x: return "Not Palindrome"
+  return "Palindrome"
+
+#print(pyPalindrome("aba"))
+#print(pyPalindrome("babbbba"))
+
+##############################################################################################################################
+'''155. Write a function where input and output as below
+input = [1,1,0,0,1,3,5,0,0,0,5]
+output = [[1, 1], [1, 3, 5], [5]]'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def f2DimensionLst(numLst):
+    lst = [[]]
+    for i in numLst :
+        if i:         
+            lst[-1].append(i)
+        elif not i and lst[-1]:
+            lst.append([])
+            
+    if not lst[-1]:
+        lst.pop()
+                    
+    print(lst)
+    
+#f2DimensionLst([1,0,0,0,1,3,5,0,0,0,5])
+
+#////////////////Other way to write code for this////////////////
+
+def nonZeroList3(input):
+  l, out = [], []
+  #print(len(input))
+  for i in range(len(input)):
+    #print(i)
+    if input[i] != 0:
+      l.append(input[i])
+      if i == len(input)-1:
+        out.append(l)
+    else:
+      if l != []:
+        out.append(l.copy())
+        l.clear()
+  return out
+
+#print(nonZeroList3([1,1,0,0,1,3,5,0,0,0,5]))
+
+#////////////////Other way to write code for this////////////////
+
+def nonZeroList1(x):
+  l, out = [], []
+  for i in x:
+    if i != 0:
+      l.append(str(i))
+      flag = 0
+    elif i == 0 and flag != 1:
+      out.append(l)
+      flag = 1
+      l = []
+  print(out + l)
+#print(nonZeroList1([1,1,0,0,1,3,5,0,0,0,5]))
+
+#////////////////Other way to write code for this////////////////
+
+def nonZeroList2(input):
+  l, out = [], []
+  for i in input:
+    if i != 0:
+      l.append(i)
+    else:
+      if l != []:
+        out.append(l.copy())
+        l.clear()
+  return out
+
+#print(nonZeroList2([1,1,0,0,1,3,5,0,0,0,5]))
+
+##############################################################################################################################
+'''156. Write python script take user input of feature bit and check if the bit position is Enabled or Disabled'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def FeatureBit():
+    a = input("Enter Feature Bits: ")        #Enter feature bits: 0011100111111111100011001000001001100000000111011
+    x = int(input("enter Bit position: "))   #Enter Bit position. e.g. 3
+    a = a[::-1]
+    for i in range(len(a)):
+        if i == x:
+            if int(a[i])==1:
+                print(a[i]+" Enabled")
+            else:
+                print(a[i]+" Disabled")
+
+#print(FeatureBit())
+
+##############################################################################################################################
+'''157. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''158. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''159. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''160. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''161. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''162. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+
+
+##############################################################################################################################
+'''163. '''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#

@@ -1,22 +1,34 @@
 #Python Dictionary [ 40 exercises with solution]
 #https://www.w3resource.com/python-exercises/python-basic-exercises.php
+#https://www.tutorialspoint.com/python3/python_dictionary.htm
 #https://docs.python.org/3/tutorial/
 
 ##############################################################################################################################
 '''1. Write a Python script to sort (ascending and descending) a dictionary by value. '''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+import operator
 def pyDictionary():
-    dirct = {'a':2}
+    d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0} #//https://docs.python.org/2/library/operator.html#operator.attrgetter//
+    sort_ascen = sorted(d.items(), key=operator.itemgetter(1))
+    sort_descen = dict(sorted(d.items(), key=operator.itemgetter(1),reverse=True))
+    print("Original: ", d)
+    print("Ascending: ",sort_ascen)
+    print("Descending", sort_descen) #//The items() method returns key-value pairs of the dictionary as tuples in a list.//
 
-#//The items() method returns key-value pairs of the dictionary as tuples in a list.//
-
+#print(pyDictionary())
+    
 ##############################################################################################################################
 '''2. Write a Python script to add a key to a dictionary. 
 
 Sample Dictionary : {0: 10, 1: 20}
 Expected Result : {0: 10, 1: 20, 2: 30}'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def pyAddKey():
+  d = {'Name': 'soumen', 'age': 35}
+  d.update({"Address":'bangalore'})
+  print(d)
 
+#print(pyAddKey())
 
 ##############################################################################################################################
 '''3. Write a Python script to concatenate following dictionaries to create a new one. 
@@ -27,11 +39,29 @@ dic2={3:30, 4:40}
 dic3={5:50,6:60}
 Expected Result : {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def pyCreateNewDict():
+    dic1 = {1:10, 2:20}
+    dic2 = {3:30, 4:40}
+    dic3 = {5:50,6:60}
+    dic4 = {}
 
+    for d in (dic1, dic2, dic3):
+      dic4.update(d)
+    print(dic4)
+#print(pyCreateNewDict())
 
 ##############################################################################################################################
 '''4. Write a Python script to check whether a given key already exists in a dictionary. '''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def pyKeyExist(x):
+    d = {'a': 100, 'b': 200, 'c':300}
+    for key in d:
+        if d[key] != x:
+            return "Key Not Present"
+        return "Key Present"
+
+#print(pyKeyExist('b'))
+#print(pyKeyExist('z'))
 
 
 ##############################################################################################################################
@@ -261,3 +291,69 @@ y has value [21, 22, 23, 24, 25, 26, 27, 28, 29]
 z has value [31, 32, 33, 34, 35, 36, 37, 38, 39]'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
+
+##############################################################################################################################
+'''41. write a python script use dict() constructor to build dictionaries directly from sequences of key-value pairs:
+for example:
+[('a', 0), ('b', 1), ('c', 2), ('d', 3)]
+dict([('a', 0), ('b', 1), ('c', 2), ('d', 3)]) ---> {'a': 0, 'b': 1, 'c': 2, 'd': 3}'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def pyListToDict():
+  num = 0
+  l =[]
+  for i in 'abcd':
+    t = (i, num)
+    l.append(t)
+    num += 1
+  dicts = dict(l)
+  print(l)
+  print(dicts)
+
+#print(pyListToDict())
+
+
+
+##############################################################################################################################
+'''42. write a python script use dict() constructor to build dictionaries directly from a Tuple:
+for example:
+dict(sape=4139, guido=4127, jack=4098) ---> {'sape': 4139, 'guido': 4127, 'jack': 4098}'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+def pyTupleToDict():
+    d = dict(sape=4139, guido=4127, jack=4098)
+    return d
+#print(pyTupleToDict())
+
+
+##############################################################################################################################
+'''43. write a python script to create dictionary of Name as key and Age as value from given string
+nameAge=Soumen is 30 years
+Arush is 5 years
+Sujata age is 30 years
+'''
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+import re
+nameAge = '''Soumen is 30 years
+Arush is 5 years
+Sujata age is 30 years'''
+
+def pyNameAge(nameAge):
+    Name = re.findall(r'[A-Z][a-z]*', nameAge)
+    Age = re.findall(r'\d{1,3}', nameAge)
+    
+    print(Name)
+    print(Age)
+
+    ageDict = {}
+    a = 0
+    for eachname in Name:
+        ageDict[eachname] = Age[a] #//Age[a], a start with position Zero//
+        print(Age[a])
+        a += 1
+    return ageDict
+
+print(pyNameAge(nameAge))
+
+
+
+    
+    
