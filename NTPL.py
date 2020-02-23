@@ -181,6 +181,7 @@ def remdup(l):
 
 
 ###################################### Alternative way to validate ######################################
+
 def remdup1(l):
     for i in range(len(l)):
         for j in m(i+1, len(l)):
@@ -190,6 +191,21 @@ def remdup1(l):
 
 
 #print(remdup([3,5,7,5,3,7,10]))
+
+###################################### Alternative way to validate ######################################
+
+def remdup(l):
+    return(myremdup(l,[]))
+
+def myremdup(l,s):
+    if l == []:
+        return([])
+    else:
+        if l[0] in s:
+            return(myremdup(l[1:],s))
+        else:
+            return([l[0]]+myremdup(l[1:],s+[l[0]]))
+        
 #print(remdup([3,1,3,5]))
 
 '''
@@ -201,7 +217,9 @@ sumsquare([1,3,5]) >>> [35, 0]
 '''
 
 def sumsquare(l):
-    lst, elst, olst = [], [], []
+    lst = []
+    elst = []
+    olst = []
     for i in l:
         if i%2 == 0:
             i = i**2
@@ -209,13 +227,32 @@ def sumsquare(l):
         else:
             i = i**2
             olst.append(i)
-    eTotal, oTotal = sum(elst), sum(olst)
+    eTotal = sum(elst)
+    oTotal = sum(olst)
+    
     lst.append(oTotal)
     lst.append(eTotal)
     return lst
 
 #print(sumsquare([1,3,5]))    
 #print(sumsquare([2,4,6]))
+
+###################################### Alternative way to validate ######################################
+
+def even(n):
+    return(n%2 == 0)
+
+def sumsquare(l):
+    oddsum = 0
+    evensum = 0
+    for n in l:
+        if even(n):
+            evensum += n*n
+        else:
+            oddsum += n*n
+    return([oddsum,evensum])
+
+
 #print(sumsquare([-1,-2,3,7]))
 
 '''
@@ -233,9 +270,21 @@ def transpose(m):
         transpose.append(rowcolumn)
     return transpose
                        
-
 #print(transpose([[1,2,3],[4,5,6]]))
 #print(transpose([[3],[6]]))
+
+###################################### Alternative way to validate ######################################
+
+def transpose(l):
+    outl = []
+    for row in l[:1]:
+        for i in range(len(row)):
+            outl.append([])
+    for row in l:
+        for i in range(len(row)):
+            outl[i].append(row[i])
+    return(outl)
+
 #print(transpose([[3]]))
 '''
 ==============================================================================================================================================================
@@ -343,6 +392,7 @@ Output: 4 2
 '''
 def SecondMaxMin():
     l = [int(j) for j in input("please enter space separated number: ").split()]
+    #l.sort() #this command sorts the list in ascending order
     for start in range(len(l)):
         minpos = start
         for i in range(start, len(l)):
@@ -435,6 +485,10 @@ def function1():
             print(b[i],end=" ")
             
 #print(function1())
+
+###################################### Alternative way to validate ######################################
+
+
 '''
 ==============================================================================================================================================================
 13. You are given a number A which contains only digits 0's and 1's. Your task is to make all digits same by just flipping one digit (i.e. 0 to 1 or 1 to 0 )
@@ -450,26 +504,30 @@ Explanation: If you flip the middle digit from 0 to 1 then all the digits will b
 def assignment1():
     l = [int(i) for i in list(input())]
     for i in range(len(l)):
-        if l.count(1) == 1 and l[i] == 1:
+        if l.count(1) == 1 and l[i] == 1: #if value 1 present in list only one time, replace 1 to 0 and print "Yes"
             l[i] = 0
             print(l)
             return ("1.YES")
             #break
-        if l.count(0) == 1 and l[i] == 0:
+        if l.count(0) == 1 and l[i] == 0: #if value 0 present in list only one time, replace 0 to 1 and print "Yes"
             l[i] = 1
             print(l)
             return ("2.YES")
             #break
-        if l.count(0) == 0 or l.count(1) == 0:
+        if l.count(0) == 0 or l.count(1) == 0:  #if empty list, print as it is and print "Yes"
             print(l)
             return("3.YES")
             #break
-        elif l.count(0) > 1 and l.count(1) >1:
+        elif l.count(0) > 1 and l.count(1) >1: #if count of 1 and 0  is more than once then print "No"
             print(l)
             return("NO")
             #break
         
-#print(assignment1())   
+#print(assignment1())
+
+###################################### Alternative way to validate ######################################
+
+
 
 '''
 ==============================================================================================================================================================
@@ -489,12 +547,56 @@ def factorial():
             j += 1
     return(ft)
     
-print(factorial())
+#print(factorial())
+
+###################################### Alternative way to validate ######################################
+
+
 '''
 ==============================================================================================================================================================
-15. 
+15. We represent scores of batsmen across a sequence of matches in a two level dictionary as follows:
+{'match1':{'player1':57, 'player2':38}, 'match2':{'player3':9, 'player1':42}, 'match3':{'player2':41, 'player4':63, 'player3':91}
+
+Each match is identified by a string, as is each player. The scores are all integers. The names associated with the matches are not fixed (here they are
+'match1', 'match2', 'match3'), nor are the names of the players. A player need not have a score recorded in all matches.
+Define a Python function orangecap(d) that reads a dictionary d of this form and identifies the player with the highest total score. Your function should
+return a pair (playername,topscore) where playername is a string, the name of the player with the highest score, and topscore is an integer, the total
+score of playername.
+
+The input will be such that there are never any ties for highest total score.
 ==============================================================================================================================================================
 '''
+d = {'match1': {'player1': 157, 'player2': 38, 'player3': 10},
+     'match2': {'player3': 9, 'player1': 42,'player4': 7000},
+     'match3': {'player2': 41, 'player4': 63, 'player3': 910}
+     }
+
+def orangecap(d):
+    #l = sorted(set(d)) #if key is not a nested key in the dictionary
+    l = []  #Here key is a key of dictionary
+    for key in d.keys():
+        for player in d[key].keys():
+            if player not in l:
+                l.append(player)
+
+
+    new_dict = {}
+    score_sum = 0
+    i = 0
+    for i in range(len(l)):
+        for key in d.keys():
+            for player in d[key].keys():
+                if player == l[i]:
+                    score_sum += d[key][player]
+                    new_dict[player]=score_sum
+        score_sum = 0
+
+    return (max(new_dict, key=new_dict.get), max(new_dict.values()))
+
+#print(orangecap(d))
+
+###################################### Alternative way to validate ######################################
+
 
 
 '''
