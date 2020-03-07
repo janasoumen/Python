@@ -526,8 +526,29 @@ def assignment1():
 #print(assignment1())
 
 ###################################### Alternative way to validate ######################################
+def assignment():
+    A = input()
+    ls = []
+    li = str(A)
+    for j in li:
+        ls.append(int(j))
+    count_z = 0
+    count_o = 0
+    for k in ls:
+        if(k==1):
+            count_o += 1
+        if(k==0):
+            count_z += 1
 
+    if((count_o == 1) or (count_z == 1)):
+        print("YES")
 
+    else:
+        if((count_o == 0) or (count_z == 0)):
+            print("NO")
+        else:
+            print("NO")
+#assignment()
 
 '''
 ==============================================================================================================================================================
@@ -550,8 +571,16 @@ def factorial():
 #print(factorial())
 
 ###################################### Alternative way to validate ######################################
+def factorial1():
+    k = int(input("Enter number to calculate factorial: "))
+    fac = 1
+    for i in range(1,k+1):
+        if(k==0):
+            break
+        fac=fac*i
 
-
+    print(fac)
+#print(factorial1())
 '''
 ==============================================================================================================================================================
 15. We represent scores of batsmen across a sequence of matches in a two level dictionary as follows:
@@ -578,8 +607,7 @@ def orangecap(d):
         for player in d[key].keys():
             if player not in l:
                 l.append(player)
-
-
+                
     new_dict = {}
     score_sum = 0
     i = 0
@@ -590,75 +618,416 @@ def orangecap(d):
                     score_sum += d[key][player]
                     new_dict[player]=score_sum
         score_sum = 0
-
     return (max(new_dict, key=new_dict.get), max(new_dict.values()))
 
 #print(orangecap(d))
 
 ###################################### Alternative way to validate ######################################
 
+def orangecap(d):
+    total = {}
+    for k in d.keys():
+        for n in d[k].keys():
+            if n in total.keys():
+                total[n] = total[n] + d[k][n]
+            else:
+                total[n] = d[k][n]
+                
+    maxtotal = -1
+    for n in total.keys():
+        if total[n] > maxtotal:
+            maxname = n
+            maxtotal = total[n]
+
+    return(maxname,maxtotal)
+
+
+d = {"ID1" : {"course":1, "fees": 10, "Duration": 2},
+     "ID2" : {"course":1, "fees": 10, 'Duration': 2},
+     "ID3" : {"course":1, "fees": 10, 'Duration': 2}
+    }
+
+#print(orangecap(d))
+
+'''
+==============================================================================================================================================================
+16. You are provided with the number of rows (R) and columns (C). Your task is to generate the matrix having R rows and C columns such that all the numbers
+are in increasing order starting from 1 in row wise manner.
+Input Format: The first line contain two numbers R and C separated by a space.
+Output Format: Print the elements of the matrix with each row in a new line and elements of each row are separated by a space.
+NOTE: There should not be any space after the last element of each row and no new line after the last row.
+Input: 3 3
+Output:
+1 2 3
+4 5 6
+7 8 9
+Explanation: Starting from the first row, the numbers are present in the increasing order. Since it's a 3X3 matrix, the numbers are from 1 to 9.
+==============================================================================================================================================================
+'''
+def matrix():
+    row, col = input("Enter two numbers R and C separated by a space: ").split()
+    count = 0
+    flag = 0
+    for r in range(int(row)):
+        for c in range(int(col)):
+            count += 1
+            if (c==int(col)-1):
+                print(count,end="")
+            else:
+                print(count, end=" ")
+                
+        if count == (int(row)*int(col)):
+            print(end="")
+        else:
+            print()
+#print(matrix())    
+###################################### Alternative way to validate ######################################
+def matrix1():
+    a,b=map(int,input("Enter two numbers R and C separated by a space: ").split())
+
+    count=1
+    m = []
+    for i in range(1,a+1):
+        l = []
+        for j in range(1,b+1):
+            l.append(count)
+            count+=1
+        m.append(l)
+
+    for i in range(a):
+        for j in range(b):
+            if(j==b-1):
+                print(m[i][j], end="")
+            else:
+                print(m[i][j], end=" ")
+        if(i!=a-1):
+            print()
+#matrix()
+'''
+==============================================================================================================================================================
+17. Write a python program to place 10 bins and then throwing 100 balls randomly in these bins
+==============================================================================================================================================================
+'''
+import random
+def binsBalls():
+    bins={}        #Creare empty dictionary called "bins" 
+    for i in range(1,11):
+        bins[i]=0  # using this loop append Key and value=0
+        
+    for i in range(1,101):
+        r = random.randint(1,10) #Randomly generate number
+        #update privious "bins={...}" value in "r" th position + 1
+        bins[r] = bins[r]+1  #Here bins[r] = key and bins[r]+1 = value
+        print("r = {} and bins[r] = {}".format(r,bins[r]))
+        print(bins)
+    return(bins)
+#print (binsBalls())
+
+'''
+==============================================================================================================================================================
+18. Write a python program for bubble sort.
+==============================================================================================================================================================
+'''
+def bubbleSort(l):
+    print(l)
+    for i in range(len(l)):
+        '''
+        # By completing this loop we would have got max element on on len(l) position.
+        # len(l)-i-1): here using -i because len(l)th elemet is already a max one by end of inner for loop
+        # len(l)-i-1): -1 we are using because we are comparing l[j]>l[j+1]. Other wise it will give out of range index
+        '''
+        for j in range(0, len(l)-i-1):
+            '''
+            #print(len(l),len(l)-i-1)
+            #print(i,j, j+1)
+            '''
+            if l[j]>l[j+1]:
+                '''#print(l[j],l[j+1])'''
+                tmp = l[j]
+                l[j] = l[j+1]
+                l[j+1] = tmp
+            '''#print(l,"\n","*"*20)'''
+    return(l)
+                               
+
+#print(bubbleSort([9,4,1,6,0,1,-1]))
+
+'''
+==============================================================================================================================================================
+19. Write a python program for Linear search
+==============================================================================================================================================================
+'''
+import time
+def linearSearch(l,x):
+    count = 0
+    flag = 0
+    start_time = time.time()
+    for i in l:
+        count += 1
+        if i == x:
+            print("Number found: "+str(i))
+            flag = 1
+            break
+    if flag == 0:
+        print("Number not found")
+    end_time = time.time()
+    print("Total number of iteration: "+str(count))
+    print("Total time taken: ",(end_time-start_time))
+    
+l = []
+for i in range(0,100001):
+    l.append(i)
+#print(linearSearch(l,99999))
+
+'''
+==============================================================================================================================================================
+20. Write a python program for Binary search
+==============================================================================================================================================================
+'''
+def binarySearch(l,x):
+    count = 0
+    flag = 0
+    fstpos = 0
+    lstpos = len(l)-1
+    start_time  = time.time()
+    
+    while  fstpos <= lstpos and flag == 0:
+        count += 1
+        midpos = (fstpos+lstpos)//2
+        if x == l[midpos]:
+            flag == 1
+            end_time = time.time()
+            print("Number found: "+str(x))
+            print("Total number of iteration: "+str(count))
+            print("Total time taken: ",(end_time-start_time))
+            return
+        else:
+            if x < l[midpos]:
+                lstpos = midpos-1
+            else:
+                fstpos = midpos+1
+    
+    return("Number is not present")
+            
+l = []
+for i in range(0,1001):
+    l.append(i)
+#print(binarySearch(l,899))
+
+'''
+==============================================================================================================================================================
+21. Arun is working in an office which is N blocks away from his house. He wants to minimize the time it takes him to go from his house to the office.
+He can either take the office cab or he can walk to the office. Arun's velocity is V1 m/s when he is walking. The cab moves with velocity V2 m/s but whenever
+he calls for the cab, it always starts from the office, covers N blocks, collects Arun and goes back to the office. The cab crosses a total distance of N
+meters when going from office to Arun's house and vice versa, whereas Arun covers a distance of 2–√∗N while walking.
+Help Arun to find whether he should walk or take a cab to minimize the time.
+Input Format: A single line containing three integer numbers N, V1, and V2 separated by a space.
+Output Format: Print 'Walk' or 'Cab' accordingly
+Constraints: 1<=V1, V2 <=100, 1<=N<=200
+Example-1: Input: 5 10 15  Output: Cab
+Example-2: Input: 2 10 14  Output: Walk
+==============================================================================================================================================================
+'''
+def cabORwalk():
+    import math
+    N,V1,V2 = map(int,input().split())
+    TV1 = 0
+    TV2 = 0
+    sqrt = math.sqrt(2)
+
+    if N>=1 and N<=200 and V1>=1 and V2<=100:
+        TV1 = (sqrt*N)/V1
+        TV2 = (2*N)/V2
+
+    else:
+        print("Value out of range")
+
+    if TV1 < TV2:
+        print("Walk")
+    else:
+        print("Cab")
+    
+#cabORwalk()
 
 
 '''
 ==============================================================================================================================================================
-16. 
+22. Given a list A of N distinct integer numbers, you can sort the list by moving an element to the end of the list. Find the minimum number of moves
+required to sort the list using this method in ascending order. 
+Input Format: The first line of the input contains N distinct integers of list A separated by a space.
+Output Format: Print the minimum number of moves required to sort the elements.
+Input: 1 3 2 4 5                        Output: 3
+Input: 20 3 1 2 6 7 8 21 19 5           Output: 8
+Input: 4 1 3 5 6 2 7 9 8                Output: 7
+Input: 5 1 3 2 7                        Output: 3
+Explanation: In the first move, we move 3 to the end of the list. In the second move, we move 4 to the end of the list, and finally, in the third movement,
+we move 5 to the end.
 ==============================================================================================================================================================
 '''
 
 
 '''
 ==============================================================================================================================================================
-17. 
+23. A semiprime number is an integer which can be expressed as a product of two distinct primes. For example 15 = 3*5 is a semiprime number but 9 = 3*3 is not
+Given an integer number N, find whether it can be expressed as a sum of two semi-primes or not (not necessarily distinct).
+Input Format: The first line contains an integer N.
+Output Format: Print 'Yes' if it is possible to represent N as a sum of two semiprimes 'No' otherwise.
+Input: 30  Output: Yes
+Input: 123 Output: Yes
+Input: 58  Output: No
+Input: 158 Output: Yes
+Explanation: N = 30 can be expressed as 15+15 where 15 is a semi-prime number (5*3 = 15)
 ==============================================================================================================================================================
 '''
+def isPrime(n):
+   flg = 0
+   for i in range(2,n-1):
+      if n%i == 0:
+         return False
+   return True
 
+def nextPrime(n):
+   n += 1
+   while True:
+      if not isPrime(n):
+         n += 1
+      else:
+         return n
+
+def isSemiPrime(val):
+    
+    for j in range(2, val//2+1):
+        #print("#"*30,j)
+        if isPrime(j):
+            for k in range(j, val//2+1):
+                if val == j*nextPrime(k):
+                    #print(">>>This is a SemiPrime number")
+                    return True
+    #print(">>>NOT a SemiPrime number")
+    return False
+
+def distinctPrimes(inp):
+    for i in range(0,inp//2+1):
+        ans = inp - i
+        if isSemiPrime(ans) and isSemiPrime(i):
+            print("{}+{}={}".format(ans,i,inp))
+            return "Yes"
+    else:
+        print("{}+{}={}".format(ans,i,inp))
+        return "No"    
+
+#inp = int(input("Enter a number to check is Semi Prime: "))
+#print(distinctPrimes(inp))
 
 '''
 ==============================================================================================================================================================
-18. 
-==============================================================================================================================================================
-'''
+24. The library at the Hogwarts School of Witchcraft and Wizardry has computerized its book issuing process. The relevant information is provided as text
+from standard input in three parts: information about books, information about borrowers and information about checkouts. Each part has a specific line format,
+described below.
 
+Information about books
+Line format: Accession Number~Title
 
-'''
-==============================================================================================================================================================
-19. 
-==============================================================================================================================================================
-'''
+Information about borrowers
+Line format: Username~Full Name
 
+Information about checkouts
+Line format: Username~Accession Number~Due Date
+Note: Due Date is in YYYY-MM-DD format.
 
-'''
-==============================================================================================================================================================
-20. 
-==============================================================================================================================================================
-'''
+You may assume that the data is internally consistent. For every checkout, there is a corresponding username and accession number in the input data, and
+no book is simultaneously checked out by two people. 
 
+Each section of the input starts with a line containing a single keyword. The first section begins with a line containing Books. The second section begins
+with a line containing Borrowers. The third section begins with a line containing Checkouts. The end of the input is marked by a line containing EndOfInput.
 
-'''
-==============================================================================================================================================================
-21. 
-==============================================================================================================================================================
-'''
+Write a Python program to read the data as described above and print out details about books that have been checked out. Each line should describe to one
+currently issued book in the following format:
 
-'''
-==============================================================================================================================================================
-22. 
-==============================================================================================================================================================
-'''
+Due Date~Full Name~Accession Number~Title
+Your output should be sorted in increasing order of due date. For books due on the same date, sort in increasing order of full name. If the due date and
+full name are both the same, sort based on the accession number, and, finally, the title of the book.
 
+Here is a sample input and its corresponding output.
+Sample Input
+Books
+APM-001~Advanced Potion-Making
+GWG-001~Gadding With Ghouls
+APM-002~Advanced Potion-Making
+DMT-001~Defensive Magical Theory
+DMT-003~Defensive Magical Theory
+GWG-002~Gadding With Ghouls
+DMT-002~Defensive Magical Theory
+Borrowers
+SLY2301~Hannah Abbott
+SLY2302~Euan Abercrombie
+SLY2303~Stewart Ackerley
+SLY2304~Bertram Aubrey
+SLY2305~Avery
+SLY2306~Malcolm Baddock
+SLY2307~Marcus Belby
+SLY2308~Katie Bell
+SLY2309~Sirius Orion Black
+Checkouts
+SLY2304~DMT-002~2019-03-27
+SLY2301~GWG-001~2019-03-27
+SLY2308~APM-002~2019-03-14
+SLY2303~DMT-001~2019-04-03
+SLY2301~GWG-002~2019-04-03
+EndOfInput
 
-'''
-==============================================================================================================================================================
-23. 
-==============================================================================================================================================================
-'''
+Sample Output
+2019-03-14~Katie Bell~APM-002~Advanced Potion-Making
+2019-03-27~Bertram Aubrey~DMT-002~Defensive Magical Theory
+2019-03-27~Hannah Abbott~GWG-001~Gadding With Ghouls
+2019-04-03~Hannah Abbott~GWG-002~Gadding With Ghouls
+2019-04-03~Stewart Ackerley~DMT-001~Defensive Magical Theory
 
+==============================================================================================================================================================
+'''
+def library():
+    # Dictionary to map accession number to title
+    books = {}
+    # Dictionary to map username to fullname
+    borrowers = {}
+    # List to store checkout data: accumulate, sort and print
+    checkouts = [] 
 
-'''
-==============================================================================================================================================================
-24. 
-==============================================================================================================================================================
-'''
+    # Find the start of Books data
+    nextline = input().strip()
+    while nextline.find("Books") < 0:
+        nextline = input().strip()
+
+    # Read upto start of Borrowers data
+    # Skip the line with "Books"
+    nextline = input().strip()
+    while nextline.find("Borrowers") < 0:
+        (accession_number,title) = nextline.split('~')
+        books[accession_number] = title
+        nextline = input().strip()
+
+    # Read upto Checkout data
+    # Skip the line with "Borrowers"
+    nextline = input().strip()
+    while nextline.find("Checkouts") < 0:
+        (username,fullname) = nextline.split('~')
+        borrowers[username] = fullname
+        nextline = input().strip()
+
+    # Process Checkouts
+    # Skip the line with "Checkouts"
+    nextline = input().strip()
+    while nextline.find("EndOfInput") < 0:
+        (username,accession_number,due_date) = nextline.split('~')
+        checkoutline = due_date+"~"+borrowers[username]+"~"+accession_number+"~"+books[accession_number]
+        checkouts.append(checkoutline)
+        nextline = input().strip()
+
+    # Print the output from checkouts
+    for checkoutline in sorted(checkouts):
+        print(checkoutline)
+
+#library()
 
 
 '''

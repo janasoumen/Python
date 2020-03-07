@@ -1,0 +1,67 @@
+Patch:[00_28L][11/13 15:23:04:153] [] [MSF-STACK] <ALA_INFO>: Current Client APP  state is -->INCALL_STATE
+
+Patch:[00_28L][11/13 15:23:04:153] [] [MSF-STACK] <ALA_INFO>: Current IP address is -->0.0.0.0
+
+Patch:[00_28L][11/13 15:23:04:153] [] [MSF-STACK] <ALA_INFO>: Received bear type is --------->LTE
+
+Patch:[00_28L][11/13 15:23:04:153] [] [MSF-STACK] <ALA_INFO>: Received Data state is -------->UP
+
+Patch:[00_28L][11/13 15:23:04:153] [] [MSF-STACK] <ALA_INFO>: Received IP address is -------->100.68.27.91
+
+Patch:[00_28L][11/13 15:23:04:333] [] [MSF-STACK] <ALA_INFO>: Current Client APP  state is -->INCALL_STATE
+
+Patch:[00_28L][11/13 15:23:04:333] [] [MSF-STACK] <ALA_INFO>: Current IP address is -->100.68.27.91
+
+Patch:[00_28L][11/13 15:23:04:333] [] [MSF-STACK] <ALA_INFO>: Received bear type is --------->LTE
+
+Patch:[00_28L][11/13 15:23:04:333] [] [MSF-STACK] <ALA_INFO>: Received Data state is -------->UP
+
+Patch:[00_28L][11/13 15:23:04:333] [] [MSF-STACK] <ALA_INFO>: Received IP address is -------->100.68.27.91
+
+Patch:[00_28L][11/13 15:23:04:853] [Tplt] [MCE:385]--->[Event Recvd: MsgType:KN_MSG_TYPE_NETWORK_REG_SUCCESS SsnId:-1 EvntType:KN_POC_EVENTTYPE_NETWORK Evnt:KN_POC_NETWORK_REG_UNREG_SUCCESS]
+
+Patch:[00_28L][11/13 15:23:08:193] [Tplt] [MSF-STACK] KN_plt_network_stability_timer_exp: update debounce_timer_val is 2000
+
+Patch:[00_28L][11/13 15:49:43:159] [Tplt] [MCE:385]--->[Event Recvd: MsgType:KN_MSG_TYPE_NETWORK_REG_SUCCESS SsnId:-1 EvntType:KN_POC_EVENTTYPE_NETWORK Evnt:KN_POC_NETWORK_REG_UNREG_SUCCESS]
+
+Patch:[00_28L][11/13 16:10:44:332] [] [MSF-STACK] <ALA_INFO>: Current Client APP  state is -->LOGIN_SUCCESS
+
+Patch:[00_28L][11/13 16:10:44:332] [] [MSF-STACK] <ALA_INFO>: Current IP address is -->100.68.27.91
+
+Patch:[00_28L][11/13 16:10:44:332] [] [MSF-STACK] <ALA_INFO>: Received bear type is --------->LTE
+
+Patch:[00_28L][11/13 16:10:44:332] [] [MSF-STACK] <ALA_INFO>: Received Data state is -------->DOWN
+
+Patch:[00_28L][11/13 16:10:44:332] [] [MSF-STACK] <ALA_INFO>: Received IP address is -------->0.0.0.0
+
+Patch:[00_28L][11/13 16:10:44:336] [] <ALA_INFO>: KN_StartTimer: Name:T-CONN-DW Dur:20000 ms ID:3303577444 Timer started successfully
+
+Patch:[00_28L][11/13 16:11:04:337] [Tplt] CallStaticVoidMethod 0xd2898abd	919741767551	PresenceUpdate UNAVAILABLE	..
+
+Patch:[00_28L][11/13 16:11:04:657] [Tplt] <ALA_INFO>: Entering CDE _KN_StopEngine: Reason: 6
+
+Patch:[00_28L][11/13 16:11:06:665] [Tplt] [MCE:385]--->[Event Recvd: MsgType:KN_MSG_TYPE_NETWORK_REG_SUCCESS SsnId:0 EvntType:KN_POC_EVENTTYPE_NETWORK Evnt:KN_POC_NETWORK_REG_UNREG_SUCCESS]
+
+Patch:[00_28L][11/13 16:22:32:697] [] [MSF-STACK] <ALA_INFO>: Current Client APP  state is -->LOGOUT_STATE
+
+Patch:[00_28L][11/13 16:22:32:697] [] [MSF-STACK] <ALA_INFO>: Current IP address is -->0.0.0.0
+
+Patch:[00_28L][11/13 16:22:32:697] [] [MSF-STACK] <ALA_INFO>: Received bear type is --------->LTE
+
+Patch:[00_28L][11/13 16:22:32:697] [] [MSF-STACK] <ALA_INFO>: Received Data state is -------->UP
+
+Patch:[00_28L][11/13 16:22:32:697] [] [MSF-STACK] <ALA_INFO>: Received IP address is -------->100.69.37.96
+
+Patch:[00_28L][11/13 16:22:32:701] [] [MSF-STACK] calculateAndGetDebounceTimerValue: Client is in FG, hence setting debounce Timer val:[2000]sec
+
+Patch:[00_28L][11/13 16:22:32:701] [] [MSF-STACK]   kn_connection_hndlr_start_dbounce_timer: debounce_timer_val is 2000 
+
+Patch:[00_28L][11/13 16:23:05:689] [Tplt] [MSF-STACK] on_connection_debounce_timer_exp: start login
+
+Patch:[00_28L][11/13 16:23:07:116] [Tplt] [MCE:385]--->[Event Recvd: MsgType:KN_MSG_TYPE_NETWORK_REG_SUCCESS SsnId:-1 EvntType:KN_POC_EVENTTYPE_NETWORK Evnt:KN_POC_NETWORK_REG_UNREG_SUCCESS]
+
+Patch:[00_28L][11/13 16--->[Event Recvd: MsgType:KN_MSG_TYPE_NETWORK_REG_SUCCESS SsnId:-1 EvntType:KN_POC_EVENTTYPE_NETWORK Evnt:KN_POC_NETWORK_REG_UNREG_SUCCESS]
+
+Patch:[00_28L][11/13 16:23:43:150] [Tplt] [MSF-STACK] KN_plt_network_stability_timer_exp: update debounce_timer_val is 2000
+
+Patch:[00_28L][11/13 16:28:06:923] [Tplt] <ALA_INFO>: Entering CDE _KN_StopEngine: Reason: 6

@@ -1,0 +1,5 @@
+a1 = "soumen"
+a2 = "if"
+a3 = 'Moto'
+a4 = 'while'
+  

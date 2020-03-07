@@ -1694,19 +1694,50 @@ def FeatureBit():
 #print(FeatureBit())
 
 ##############################################################################################################################
-'''157. '''
+'''157. Write python script to check given number is a prime number or not'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
+def isPrime(n):
+   flg = 0
+   for i in range(2,n-1):
+      if n%i == 0:
+         return False
+   return True
+
+#n=int(input("Enter a number to check is Prime?: "))
+#print(isPrime(n))
 
 ##############################################################################################################################
-'''158. '''
+'''158. Write python script to check what is a next prime number of a given number'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
+def nextPrime(n):
+   n += 1
+   while True:
+      if not isPrime(n):    #isPrime(j) function is called
+         n += 1
+      else:
+         return n
+#n = int(input("Please enter a number to check next Prime: "))
+#print(nextPrime(n))
 
 ##############################################################################################################################
-'''159. '''
+'''159. Write python script to check given number is Semi Prime or not. Example: 15 is a semi-prime number (5*3 = 15)'''
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 
+def isSemiPrime(val):
+    
+    for j in range(2, val//2+1):
+        #print("#"*30,j)
+        if isPrime(j):                        #isPrime(j) function is called
+            for k in range(j, val//2+1):
+                if val == j*nextPrime(k):     #nextPrime(k) function is called
+                    #print(">>>This is a SemiPrime number")
+                    return True
+    #print(">>>This is NOT a SemiPrime number")
+    return False
+#val = int(input("Enter a number to check is Semi Prime: "))
+#print(isSemiPrime(val))
 
 ##############################################################################################################################
 '''160. '''
