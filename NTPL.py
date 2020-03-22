@@ -558,7 +558,24 @@ Output Format: Print the factorial of n.
 Input: 4     Output: 24
 ==============================================================================================================================================================
 '''
-def factorial():
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return (n * factorial(n-1))
+
+def callFactorial(num):
+    if num < 0:
+        print("Sorry! You have entered a -ve int numbe")
+    elif num == 0:
+        print("Factorial of 0 is 1")
+    else:
+        print("Factorial of {} is {}".format(num,factorial(num)))
+
+#callFactorial(num = int(input("Enter a number: ")))
+###################################### Alternative way to validate ######################################
+
+def factorial1():
     n = int(input("Enter number to calculate factorial: "))
     j = 0
     ft = 1
@@ -568,10 +585,10 @@ def factorial():
             j += 1
     return(ft)
     
-#print(factorial())
+#print(factorial1())
 
 ###################################### Alternative way to validate ######################################
-def factorial1():
+def factorial2():
     k = int(input("Enter number to calculate factorial: "))
     fac = 1
     for i in range(1,k+1):
@@ -580,7 +597,8 @@ def factorial1():
         fac=fac*i
 
     print(fac)
-#print(factorial1())
+#print(factorial2())
+    
 '''
 ==============================================================================================================================================================
 15. We represent scores of batsmen across a sequence of matches in a two level dictionary as follows:
@@ -778,6 +796,28 @@ l = []
 for i in range(0,100001):
     l.append(i)
 #print(linearSearch(l,99999))
+    
+###################################### Recursive algorithm for linear search an element in a list ######################################
+    
+import random
+def lnrSearch(l,loc,item):
+    if loc < 0:
+        print("****First If condition****")
+        loc = 0
+    if l[loc] == item:
+        print("****Second If condition****")
+        print("Found")
+        return
+    if loc == len(l)-1:
+        print("****Third If condition****")
+        print("Not Found")
+        return 0
+    else:
+        print("****Else condition****")
+        return lnrSearch(l,loc+1,item)
+
+l = [1,2,3,4,5,6,7,8,9]
+#lnrSearch(l,-11,9)
 
 '''
 ==============================================================================================================================================================
@@ -1032,21 +1072,261 @@ def library():
 
 '''
 ==============================================================================================================================================================
-25. 
+25. Write a python code to find next pernutation
 ==============================================================================================================================================================
 '''
+import sys
+sys.setrecursionlimit(10000)
+def next_pernutation(a):
+    
+    inverse_point = len(a)-2
+
+    while inverse_point>=0 and a[inverse_point]>=a[inverse_point+1]:
+            inverse_point -= 1
+
+    if inverse_point < 0:
+        return[]
+
+    for i in reversed(range(inverse_point,len(a))):
+        if a[i] > a[inverse_point]:
+            a[i],a[inverse_point] = a[inverse_point],a[i]
+            break
+    a[inverse_point+1:] = reversed(a[inverse_point+1:])
+    print(a)
+    return next_pernutation(a)
+
+#a = [9,1,2,4,3,1,0]
+a = ["a","b","c","d"]
+#print(next_pernutation(a))   
+
+'''
+==============================================================================================================================================================
+26. Write a python function spiral(r,c,mtrx) where r=row, c=column and mtrx=list of row*column matrix e.g. 4*4 matrix where row = 4 and column = 4
+create below matrix. Out put of the script is given matrix in Spiral Traversing form.
+ 1  2  3  4
+ 5  6  7  8
+ 9 10 11 12
+13 14 14 16
+
+Out put of the python code will be: 1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+==============================================================================================================================================================
+'''
+def spiral(r,c,mtrx):     #r = number of row, c = number of column, mtrx = matrix
+    
+    r0 = 0     # Starting index of row
+    c0 = 0     # Starting index of column
+    
+    while r0 < r and c0 < c:
+
+        # Printing the first row from the remaining rows
+        for i in range(c0, c):
+            print(mtrx[r0][i],end= " ")
+            
+        r0 += 1
+        # Printing the last column from the remaining column
+        for i in range(r0,r):
+            print(mtrx[i][c-1], end=" ")
+
+        c -= 1
+        # Printing the last row from remaining rows
+        if r0 < r:  
+             for i in range(c-1, c0-1, -1):
+                 print(mtrx[r-1][i], end=" ")
+             
+        r -= 1
+        if c0 < c:
+             # Printing the first column from the remaining column
+             for i in range(r-1,r0-1,-1):
+                 print(mtrx[i][c0], end=" ")
+             c0 += 1
+     
+mtrx = []
+count = 1
+r = 4; c = 4
+
+for i in range(r):
+    l = []
+    for j in range(c):
+        l.append(count)
+        count += 1
+    mtrx.append(l)
+    #print(l)
+#print(mtrx)
+
+#spiral(r,c, mtrx)
+
+'''
+==============================================================================================================================================================
+27. JOC Assignment 7: Predict the output of the calling function func1() for a given square matrix mx of dimension 70 × 70
+==============================================================================================================================================================
+'''
+import turtle
+def func(mx,i):
+    n = len(mx)
+    tur = turtle.Turtle()
+    tur.setpos(i,i)
+
+    for ind in range(i,n-i):
+        tur.goto(i,ind)
+    for ind in range(i+1,n-i):
+        tur.goto(i,n-1-i)
+    for ind in range(n-2-i,i,-1):
+        tur.goto(n-1-i, ind)       
+    for ind in range(n-i-1,i,-1):
+        tur.goto(ind,i)
+
+
+
+mx = []
+count = 1
+for i in range(170):
+    l = []
+    for j in range(170):
+        l.append(count)
+        count += 1
+    mx.append(l)
+    #print(l)
+#print(mx)
+
+
+def func1(mx):
+    print("#"*20)
+    n = len(mx)
+    #print(mx)
+    i = 0
+    while(i<=n-1):
+        func(mx,i)
+        i=i+10
+#func1(mx)
 
 
 '''
 ==============================================================================================================================================================
-26. 
+28. Which of the following codes represent a correct version of a board game where the user has to move from block 1 to block 100? The game initialises only
+when the user gets a 1 or 6 on the dice and ends once he reaches 100 or gets a number which makes him reach beyond 100 (i.e. the player wins if he is at 99
+and gets a 4).
+==============================================================================================================================================================
+'''
+import sys
+import random
+sys.setrecursionlimit(10000)
+def play(psn):
+    r = random.randint(1,6)
+    print("dice r: ",r)
+    if psn == 0:
+        print("First IF ###########################")
+        if r==1 or r==6:
+            print("Nested IF %%%%%%%%%%%%%%%%%%%%%%%%")
+            psn = 1
+    else:
+        print("Else $$$$$$$$$$$$$$$$$$$$$$$$$")
+        psn = psn+r
+        print("       psn: ",psn)
+    print("Position=",psn)
+    if psn >= 20:
+        print("You won")
+        return
+    print("Function call: ", psn)
+    play(psn)
+    
+position = 0
+print("Position: ",position)
+#play(position)
+'''
+==============================================================================================================================================================
+29. Write a python script for printing "*" as below
+
+             * * * * * * *               
+
+            * * * * * * * * *             
+
+          * * * * * * * * * * *           
+
+        * * * * * * * * * * * * *         
+
+        * * * * * * * * * * * * *         
+
+          * * * * * * * * * * *           
+
+            * * * * * * * * *             
+
+              * * * * * * *  
+==============================================================================================================================================================
+'''
+def func():
+    print()
+    c=10
+    i=3
+    while i<=6:
+        j=0
+        while j<=20:
+            if j>=10-i and j<=10+i:
+                print("*",end=" ")
+            else:
+                print(" ",end=" ")
+            j = j+1
+        print("\n")
+        i = i+1
+    i=6
+    while i>=3:
+        j=0
+        while j <=20:
+            if j>=10-i and j<=10+i:
+                print("*",end=" ")
+            else:
+                print(" ",end=" ")
+            j=j+1
+        print("\n")
+        i=i-1
+    
+#func()
+
+'''
+==============================================================================================================================================================
+30. Write a python script, A snakes and ladders game with one snake where the snake can change its position during the game and also during any subsequent
+plays (a board game where the snakes keep moving). Further, the snake can bite you any number of times.
+==============================================================================================================================================================
+'''
+import random
+def play(psn):
+    snake_begin=-1
+    snake_end=-1
+    while(snake_begin<=snake_end):
+        snake_begin=random.randint(1,99)
+        snake_end=random.randint(1,99)
+    print("Snake from", snake_begin, "to",snake_end)
+    r = random.randint(1,6)
+    print("Dice rolled: ",r)
+    if psn ==0:
+        if r==1 or r==6:
+            psn=1
+    else:
+        psn=psn+r
+    print("Position=",psn)
+    print("\n")
+    #input()
+    if psn==snake_begin:
+        print("Bitten by snake")
+        psn=snake_end
+    if psn>=100:
+        print("you won")
+        return
+    play(psn)
+
+position=0
+#play(position)
+
+'''
+==============================================================================================================================================================
+31. https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/
+The preorder traversal of a binary search tree with integer values produces the following sequence: 35, 23, 26, 46, 40, 39, 41, 52. What is the value of the
+right child of the root of the tree?
 ==============================================================================================================================================================
 '''
 
-
 '''
 ==============================================================================================================================================================
-27. 
+3. 
 ==============================================================================================================================================================
 '''
 
