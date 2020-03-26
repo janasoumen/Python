@@ -1,45 +1,59 @@
-def covid19(r,d):
-    # r = infaction ratio, d = total days
-    p=1
-    d1 = 0
-    while d1 < d:
-        p = p+p*r
-        d1 += 5
-        print(d1)
-        print(p)
-  
-    
-    
-print(covid19(0.625,30))
+import matplotlib.pyplot as plt
+import random
+def play():
+    amt=0
+    for i in range(0,100):
+        r=random.randint(1,6)
+        amt=amt+r
+    return amt
 
+l=[]
+for j in range(0,100):
+    s=0
+    for i in range(0,100):
+        s=s+play()
+    l.append(s)
+x=[]
+y=[]
+for each in list(set(l)):
+    x.append(each)
+    y.append(l.count(each))
+plt.plot(x,y,'ro')
+plt.show()
 
-###################################################################################
+        
 '''
-def play(psn,flag):
-    snake_begin=-1
-    snake_end=-1
-    while(snake_begin<=snake_end):
-        snake_begin=random.randint(1,99)
-        snake_end=random.randint(1,99)
-    print("Snake from", snake_begin, "to",snake_end)
-    r = random.randint(1,6)
-    print("Dice rolled: ",r)
-    if psn ==0:
-        if r==1 or r==6:
-            psn=1
-    else:
-        psn=psn+r
-    print("Position=",psn)
-    #input()
-    if psn==snake_begin and flag==0:
-        print("Bitten by snake")
-        psn=snake_end
-        flag=1
-    if psn>=100:
-        print("you won")
-        return
-    play(psn,flag)
+import random
+dict_age = {}
+dict_age["A"] = 20
+dict_age["B"] = 10
+dict_age["C"] = 40
+dict_age["D"] = 30
 
-position=0
-play(position,0)
+
+l=list(dict_age.values())
+print(l)
+
+dict1={}
+l_name=dict_age.keys()
+print(l_name)
+i=0
+prev=0
+for each in dict_age:
+    print("each",each)
+    dict1[each]=prev+l[i]
+    prev=dict1[each]
+    print(prev,prev)
+    i=i+1
+print(dict1)
+
+r=random.randint(0,sum(dict_age.values()))
+print("Hi",sum(dict_age.values()))
+print(r)
+for each in dict1:
+    print("each",each)
+    if r<dict1[each]:
+        print("www",dict1[each])
+        print("Give all money to", each)
+        break
 '''

@@ -1,19 +1,33 @@
-k = ["a","b","c","d","e","f","g","h","i","j"]
-l = len(k)
+def removeDuplicate( li ):
+    newli=[]
+    seen = set()
+    for item in li:
+        if item not in seen:
+            seen.add( item )
+            newli.append(item)
+            print(newli)
+            print(seen)
+
+    return newli
+
+li=[]
+li= list(map(int, input ().split ()))
+x = removeDuplicate(li)
+
+for i in x:
+    print(i,end=" ")
 
 
-for i in range(0,l):
-    if k[i-1] < k[i]:
-        print("k[i-1] < k[i]", k[i-1],"<",k[i])
-        i -= 1
-        print(i)
+'''
+s = input().lower()
+print(type(s))
+vow = {"a","e","i","o","u"}
 
-for j in range(0,l):
-    print("*"*30)
-    print(i)
-    if k[i] > k[j]:
-        print("k[i] < k[j]", k[i],"<",k[j])
-        k[i],k[j] = k[j],k[i]
-        print(k)
-    print(k)
-    
+for el in vow:
+    for i in range(len(s)):
+        if i < len(s)-1:
+            if s[i] == s[i+1] and s[i] == el:
+                s = s.replace(s[i], '', 1)
+print(s)
+        
+'''

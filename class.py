@@ -1,4 +1,27 @@
 # =============================================================================
+
+class PlayCharacter:
+    def __init__(self,name,age):
+        self.name = name
+        self.age =  age
+    def play(self):
+        print("run")
+        return "done"
+
+player1 = PlayCharacter("Soumen",37)
+player2 = PlayCharacter("Arush", 5)
+
+print(player1.name)
+print(player2.age)
+print(player1.play())
+print(player2.play())
+
+
+        
+
+# =============================================================================
+'''
+# =============================================================================
 class Student():
     def __init__(self,name,rollno):
         self.name = name
@@ -25,7 +48,7 @@ s2 = Student("Jenny",3)
 s1.show()
     
 # =============================================================================
-
+'''
 
 '''
 # =============================================================================
