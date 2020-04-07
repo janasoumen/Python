@@ -1684,6 +1684,7 @@ def FeatureBit():
     a = input("Enter Feature Bits: ")        #Enter feature bits: 0011100111111111100011001000001001100000000111011
     x = int(input("enter Bit position: "))   #Enter Bit position. e.g. 3
     a = a[::-1]
+    print(type(a),a)
     for i in range(len(a)):
         if i == x:
             if int(a[i])==1:

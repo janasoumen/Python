@@ -1343,7 +1343,7 @@ def lcs(A,B,i,j):
 
 A = "AGGTAB"
 B = "GXTXAYB"
-print(lcs(A,B,i=0,j=0))
+#print(lcs(A,B,i=0,j=0))
 
 ###################################### LCS using Dynamic Programming (Memoization) ######################################
 
@@ -1371,7 +1371,7 @@ def removeDuplicate( li ):
     return newli
 
 li=[]
-li= list(map(int, input ().split ()))
+#li= list(map(int, input ().split ()))
 x = removeDuplicate(li)
 
 for i in x:
@@ -1379,17 +1379,97 @@ for i in x:
 
 '''
 ==============================================================================================================================================================
-34. 
+34. A panagram is a sentence containing every 26 letters in the English alphabet. Given a string S, check if it is panagram or not.
+Input Format: The first line contains the sentence S.
+Output Format: Print 'YES' or 'NO' accordingly
+Input: The quick brown fox jumps over the lazy dog                          Output: YES
 ==============================================================================================================================================================
 '''
+def checkPangram(s): 
+    List = [] 
+    # create list of 26 charecters and set false each entry 
+    for i in range(26): 
+        List.append(False)
+    print(List)
+          
+    #converting the sentence to lowercase and iterating 
+    # over the sentence  
+    for c in s.lower():  
+        if not c == " ": 
+            # make the corresponding entry True
+            List[ord(c) -ord('a')]=True 
+              
+    #check if any charecter is missing then return False 
+    for ch in List: 
+        if ch == False: 
+            return False
+    return True
+'''  
+# Driver Program to test above functions 
+sentence = input()
+  
+if (checkPangram(sentence)): 
+    print("YES")
+else: 
+    print("NO")
+'''
 
+############ Other way to write ############
+
+def checkPangram1():
+    s = input().upper()
+
+    l = []
+    for i in s:
+        if i == " ":
+            continue
+        else:
+            l.append(i)
+
+    set1 = set(l)
+
+    if len(set1) == 26:
+        print ("YES",end="")
+    else:
+        print("NO",end="")
+        
+#checkPangram1()
 
 '''
 ==============================================================================================================================================================
-35. 
+35. Given a string S of lowercase letters, remove consecutive vowels from S. After removing, the order of the list should be maintained.
+Input Format: Sentence S in a single line
+Output Format: Print S after removing consecutive vowels
+Input: your article is in queue
+Output: yor article is in qu
+Explanation:  
+In the first word, 'o' and 'u' are appearing together, hence the second letter 'u' is removed. In the fifth word, 'u', 'e', 'u' and 'e' are appearing
+together, hence 'e', 'u', 'e' are removed.
 ==============================================================================================================================================================
 '''
-
+def is_vow(c): 
+  
+    # this compares vowel with  
+    # character 'c' 
+    return ((c == 'a') or (c == 'e') or (c == 'i') or (c == 'o') or (c == 'u')) 
+  
+# function to print resultant string 
+def removeVowels(str): 
+  
+    # print 1st character 
+    print(str[0], end = "") 
+  
+    # loop to check for each character 
+    for i in range(1,len(str)): 
+  
+        # comparison of consecutive 
+        # characters 
+        if ((is_vow(str[i - 1]) != True) or (is_vow(str[i]) != True)): 
+            print(str[i], end = "")
+  
+# Driver code 
+#str= input() 
+#removeVowels(str)
 
 '''
 ==============================================================================================================================================================
