@@ -180,6 +180,9 @@ else:
             
 
 print("\n")
-input("WhiteBox@motorolasolutions.com")    
+print("Press any key to close the terminal...")
+print("\n")
+print("Created on Wed Apr  8 01:25:48 2020")
+input("@author: jsoumen")    
 
 

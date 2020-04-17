@@ -1473,13 +1473,155 @@ def removeVowels(str):
 
 '''
 ==============================================================================================================================================================
-36. 
+36. Given a list of n-1 numbers ranging from 1 to n, your task is to find the missing number. There are no duplicates. 
+Input Format: The first line contains n-1 numbers with each number separated by a space.
+Output Format: Print the missing number
+Input: 1 2 4 6 3 7 8          Output: 5
+Explanation: In the above list of numbers 5 is missing and hence 5 is the input
+==============================================================================================================================================================
+'''
+# getMissingNo takes list as argument 
+def getMissingNo(A): 
+    n = len(A) 
+    total = (n+1)*(n+2)/2
+    sum_of_A = sum(A) 
+    return total - sum_of_A 
+  
+# Driver program to test above function 
+li=[]
+#li= list(map(int, input ().split ())) 
+miss = getMissingNo(li) 
+#print(int(miss)) 
+
+'''
+==============================================================================================================================================================
+37. You are provided with a number D containing only digits 0's and 1's. Your aim is to convert this number to have all the digits same.
+For that, you will change exactly one digit i.e. from 0 to 1 or from 1 to 0. If it is possible to make all digits equal (either all 0's or all 1's)
+by flipping exactly 1 digit then output "YES", else print "NO" (quotes for clarity).
+Input Format: The first line of the input contains the number D made of only digits 1's and 0's.
+Output: Print 'YES' or 'NO' depending on whether its possible to make it all 0s or 1s or not. 
+Example-1:   Input:  101  Output:  YES
+Example-2:   Input:  11   Output:  NO
+Explanation: In the first example, it is possible to make all the digits same by flipping the middle digit from 0 to 1. In the second example it is not possible.
+==============================================================================================================================================================
+'''
+def isSameDigit():
+    numbers = []
+
+        
+    ls = []
+    x = input("Enter zoro/one (1010101): ")
+    li = str(x)
+    for j in li:
+        ls.append(int(j))
+    numbers.append(ls)
+
+
+    for j in numbers:
+        count_z = 0
+        count_o = 0
+        for k in j:
+            if(k==1):
+                count_o += 1
+            if(k==0):
+                count_z += 1
+        
+        if((count_o == 1) or (count_z == 1)):
+            print("YES")
+        
+        else:
+            if((count_o == 0) or (count_z == 0)):
+                print("NO")
+            else:
+                print("NO")
+            
+#isSameDigit()
+'''
+==============================================================================================================================================================
+38. Given a list A of elements of length N, ranging from 1 to N. All elements may not be present in the array. If the element is not present then there will
+be -1 present in the array. Rearrange the array such that A[i] = i and if i is not present display -1 at that place.
+Input Format: The first line contains n numbers with each number separated by a space.
+Output Format: Print the elements of the list after the modification.
+Input: -1 -1 6 1 9 3 2 -1 4 -1        Output: -1 1 2 3 4 -1 6 -1 -1 9
+Explanation: The modified list contains elements such that A[i] = i.
+==============================================================================================================================================================
+'''
+def fix( A, len): 
+      
+    for i in range(0, len):  
+          
+        if (A[i] != -1 and A[i] != i): 
+            x = A[i]; 
+  
+            # check if desired place 
+            # is not vacate 
+            while (A[x] != -1 and A[x] != x): 
+                #store the value from 
+                # desired place 
+                y = A[x] 
+  
+                # place the x to its correct 
+                # position 
+                A[x] = x 
+  
+                # now y will become x, now 
+                # search the place for x 
+                x = y 
+              
+            # place the x to its correct 
+            # position 
+            A[x] = x; 
+  
+            # check if while loop hasn't 
+            # set the correct value at A[i] 
+            if (A[i] != i) : 
+                  
+                # if not then put -1 at 
+                # the vacated place 
+                A[i] = -1; 
+  
+# Driver function. 
+A = [] 
+#A= list(map(int, input ().split ())) 
+  
+fix(A, len(A)) 
+  
+for i in range(0, len(A)):
+    if(i==len(A)-1):
+        print(A[i],end = '')
+    else:
+        print (A[i],end = ' ') 
+
+'''
+==============================================================================================================================================================
+39. 
 ==============================================================================================================================================================
 '''
 
 
 '''
 ==============================================================================================================================================================
-37. 
+40. 
 ==============================================================================================================================================================
 '''
+
+
+'''
+==============================================================================================================================================================
+41. 
+==============================================================================================================================================================
+'''
+
+'''
+==============================================================================================================================================================
+42. 
+==============================================================================================================================================================
+'''
+
+
+'''
+==============================================================================================================================================================
+43. 
+==============================================================================================================================================================
+'''
+
